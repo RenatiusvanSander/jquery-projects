@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Try with jQuery
+        </title>
+        <script src="jquery-3.7.1.js"></script>
+        <script>
+            /* console.log($(".error-message--visible"));
+            console.log($("[role='alert']")); */
+            // $( "input[value='4']" ).next().text( "Hot Fuzz" );
+            // $( "div" ).css( "color", "red" );
+            $(document).ready(function(){
+                $("div").css( "color", "red" );
+                var errorClass = $("span[role='alert']").attr('class');
+                var errorClassId = $("span[role='alert']").attr('id');
+                $("div[data-handle]").each(function( i ) {
+                    console.log("done");
+                });
+                console.log(errorClass);
+                console.log(errorClassId);
+                //$("[id=j_idt163]").css("background-color", "yellow");
+                //var myVar = $(".multi-range-slider-base").get(0).val();
+            });
+        </script>
+    </head>
+    <body>
+        <div>
+            <div class="multi-range-slider multi-range-slider-target multi-range-slider-ltr multi-range-slider-horizontal bg-color--cd-black-13" data-plugin="{noUiSlider:{baseBackground:&quot;bg-color--cd-black-13&quot;,noUiSlider:{pips:{mode:&quot;positions&quot;,density:10,values:[0,25,50,75,100]},range:{max:20,min:4}},inputMax:&quot;#j_idt164&quot;,inputMin:&quot;#j_idt163&quot;,infiniteEndValues:&quot;none&quot;,connectBackground:[&quot;bg-color--cd-black&quot;]}}">
+                <input id="j_idt163" name="j_idt163" type="hidden" value="4">
+                <input id="j_idt164" name="j_idt164" type="hidden" value="10">
+                <div class="multi-range-slider-base">
+                    <div class="multi-range-slider-connects">
+                        <div class="multi-range-slider-connect bg-color--cd-black" style="transform: translate(0%, 0px) scale(0.375, 1);">
+                        </div>
+                    </div>
+                    <div class="multi-range-slider-origin" style="transform: translate(-100%, 0px); z-index: 4;">
+                        <div class="multi-range-slider-handle multi-range-slider-handle-lower" data-handle="0" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="4.0" aria-valuemax="10.0" aria-valuenow="4.0" aria-valuetext="4">
+                            <div class="multi-range-slider-tooltip" style="transform: translate(-1.235%); left: 1.235%;">4</div>
+                        </div>
+                    </div>
+                    <div class="multi-range-slider-origin" style="transform: translate(-62.5%, 0px); z-index: 6;">
+                        <div class="multi-range-slider-handle multi-range-slider-handle-upper" data-handle="1" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="4.0" aria-valuemax="20.0" aria-valuenow="10.0" aria-valuetext="10">
+                            <div class="multi-range-slider-tooltip" style="transform: translate(-36.86%); left: 36.86%;">10</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="multi-range-slider-pips multi-range-slider-pips-horizontal">
+                    <div class="multi-range-slider-marker multi-range-slider-marker-horizontal multi-range-slider-marker-large" style="left: 0%;"></div>
+                    <div class="multi-range-slider-value multi-range-slider-value-horizontal multi-range-slider-value-large" data-value="4" style="left: 0%;">4</div>
+                    <div class="multi-range-slider-marker multi-range-slider-marker-horizontal multi-range-slider-marker-normal" style="left: 8.33333%;"></div>
+                    <div class="multi-range-slider-marker multi-range-slider-marker-horizontal multi-range-slider-marker-normal" style="left: 16.6667%;"></div>
+                    <div class="multi-range-slider-marker multi-range-slider-marker-horizontal multi-range-slider-marker-large" style="left: 25%;"></div>
+                    <div class="multi-range-slider-value multi-range-slider-value-horizontal multi-range-slider-value-large" data-value="8" style="left: 25%;">8</div>
+                    <div class="multi-range-slider-marker multi-range-slider-marker-horizontal multi-range-slider-marker-normal" style="left: 33.3333%;"></div>
+                    <div class="multi-range-slider-marker multi-range-slider-marker-horizontal multi-range-slider-marker-normal" style="left: 41.6667%;"></div>
+                    <div class="multi-range-slider-marker multi-range-slider-marker-horizontal multi-range-slider-marker-large" style="left: 50%;"></div>
+                    <div class="multi-range-slider-value multi-range-slider-value-horizontal multi-range-slider-value-large" data-value="12" style="left: 50%;">12</div>
+                    <div class="multi-range-slider-marker multi-range-slider-marker-horizontal multi-range-slider-marker-normal" style="left: 58.3333%;"></div>
+                    <div class="multi-range-slider-marker multi-range-slider-marker-horizontal multi-range-slider-marker-normal" style="left: 66.6667%;"></div>
+                    <div class="multi-range-slider-marker multi-range-slider-marker-horizontal multi-range-slider-marker-large" style="left: 75%;"></div>
+                    <div class="multi-range-slider-value multi-range-slider-value-horizontal multi-range-slider-value-large" data-value="16" style="left: 75%;">16</div>
+                    <div class="multi-range-slider-marker multi-range-slider-marker-horizontal multi-range-slider-marker-normal" style="left: 83.3333%;"></div>
+                    <div class="multi-range-slider-marker multi-range-slider-marker-horizontal multi-range-slider-marker-normal" style="left: 91.6667%;"></div>
+                    <div class="multi-range-slider-marker multi-range-slider-marker-horizontal multi-range-slider-marker-large" style="left: 100%;"></div>
+                    <div class="multi-range-slider-value multi-range-slider-value-horizontal multi-range-slider-value-large" data-value="20" style="left: 100%;">20</div>
+                </div>
+            </div>
+            <span id="j_idt164-error-messages" role="alert" class="error-message error-message--visible">
+                <span class="error-message__text">Demo Fehler 1 mit etwas Text um breiter zu werden.</span>
+                <span class="error-message__text">Demo Fehler 2 mit etwas Text um breiter zu werden.</span>
+            </span>
+        </div>
+    </body>
+</html>
