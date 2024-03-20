@@ -7,15 +7,20 @@
 		<link rel="stylesheet" type="text/css" href="css/jquery-ui.structure.css">
 		<link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.css">
 		<link rel="stylesheet" type="text/css" href="css/ui.captionator.css">
+		<script src="js/jquery-3.7.1.js"></script>
+		<script src="js/jquery-ui.js"></script>
+		<script src="js/jquery.ui.captionator.js"></script>		
 	</head>
 	<body>
 		<img src="img/1.jpg" alt="Royal Air Force Eurofighter Typhoon">
 		<img src="img/2.jpg" alt="A British military GR-9 Harrier">
-		<img src="img/3.jpg" alt="Two RAF Tornado GR-4s pull away from a KC-135 Stratotanker after refueling">        
-		<script type="text/javascript" src="js/jquery-3.7.1.js"></script>
-		<script type="text/javascript" src="js/jquery.ui.core.js"></script>
-		<script type="text/javascript" src="js/jquery.ui.widget.js"></script>
-		<script type="text/javascript" src="js/jquery.ui.captionator.js"></script>
+		<img src="img/3.jpg" alt="Two RAF Tornado GR-4s pull away from a KC-135 Stratotanker after refueling">
+		<script src="js/jquery-3.7.1.js"></script>
+		<script src="js/jquery-ui.js"></script>
+		<script src="js/jquery.ui.captionator.js"></script>	
+		<script>
+				$("img").captionator("option", "location", "top");
+		</script>
 	</body>
 </html>
 

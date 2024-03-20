@@ -1,0 +1,7 @@
+.ownComboBoxWrapper {
+    display: block;
+    max-width: fit-content;
+    max-height: fit-content;
+    box-shadow: 20px 20px 50px 5px grey;
+    padding: 0;
+}
