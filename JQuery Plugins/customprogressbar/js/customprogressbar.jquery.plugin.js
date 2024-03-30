@@ -1,5 +1,5 @@
 (function($){
-  $.widget( "custom.customprogressbar", {
+  $.widget( "ccf.customprogressbar", {
  
     options: {
         value: 0
@@ -8,37 +8,40 @@
     _create: function() {
         this.element
             .addClass( "progressbar" )
-            .progressbar({ value: 20 });
+            .progressbar({
+                value: 0,
+                complete: this._onComplete,
+                change: function( event, ui ) { console.log("change internal")}
+             });
+        
+        this.element.on("click", function() {
+            var currentValue = $( this ).progressbar( "option", "value" );
+            $(this).progressbar("value", currentValue + 10);
+        })
+        this.element.on( "progressbarchange", function( event, ui ) { console.log("change done")} );
+        
+        this.element.find("div.progressbar.ui-progressbar.ui-corner-all.ui-widget.ui-widget-content").attr("id","progresswraper").removeClass("ui-widget-content").addClass("customprogressbar-widget-content");
+        this.element.find("div.ui-progressbar-value.ui-corner-left.ui-widget-header").attr("id","progress").removeClass("ui-widget-header").addClass("customprogressbar-widget-header");
     },
- 
-    // Create a public method.
-    value: function( value ) {
- 
-        // No value passed, act as a getter.
-        if ( value === undefined ) {
-            return this.options.value;
+
+    _onComplete: function( event, ui ) {
+        if(event.type === "progressbarcomplete") {
+            console.log("start event")
+            console.log(event);
+            console.log("run complete");
+            $(this).css("display", "none");
         }
- 
-        // Value passed, act as a setter.
-        this.options.value = this._constrain( value );
-        var progress = this.options.value + "%";
-        this.element.text( progress );
     },
- 
-    // Create a private method.
-    _constrain: function( value ) {
-        if ( value > 100 ) {
-            value = 100;
-        }
-        if ( value < 0 ) {
-            value = 0;
-        }
-        return value;
-    }
+
+    _destroy: function() {
+        this.element.off("click");
+        this.element
+            .removeClass( "progressbar" )
+    },
 });
 })(jQuery);
 
 $( "<div></div>" )
     .appendTo( "body" )
-    .customprogressbar({ value: 20 });
+    .customprogressbar({ value: 100 });
  
