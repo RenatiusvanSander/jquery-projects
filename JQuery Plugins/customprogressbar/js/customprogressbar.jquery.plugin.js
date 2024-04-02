@@ -14,8 +14,9 @@
                 change: function( event, ui ) { console.log("change internal")}
              })
              .bind( "progressbarcomplete", function( event, data ) {
+                let progressValue = $( this ).progressbar( "value" );
                 alert( "Events bubble and support many handlers for extreme flexibility." );
-                alert( "The progress bar value is " + data.value );
+                alert( "The progress bar value is " + progressValue );
             });
         
         this.element.on("click", function() {
@@ -30,13 +31,23 @@
         this.refresh();
     },
 
+    value: function( value ) {
+        if(value === undefined) {
+            return this.options.value;
+        }
+
+        this.options.value = this._constrain( value );
+        //this.element.progressbar("value", value);
+        this.refresh();
+    },
+
     _onComplete: function( event, ui ) {
         if(event.type === "progressbarcomplete") {
             console.log("start event")
             console.log(event);
             console.log("run complete");
             $(this).css("display", "none");
-            this.refresh();
+            //$( this ).customprogressbar.refresh();
         }
     },
 
@@ -63,10 +74,15 @@
     },
 
     refresh: function() {
-        if ( this.options.value == 100 ) {
-            this._trigger( "complete", null, { value: 100 } );
+        if(this.options.value < 101) {
+            this.element.progressbar("value", this.options.value);
+        }
+
+        if ( this.options.value === 100 ) {
+            this._trigger( "complete", null, { value: this.options.value } );
         }
     },
+
 
     _destroy: function() {
         this.element.off("click");
@@ -76,7 +92,23 @@
 });
 })(jQuery);
 
-$( "<div></div>" )
-    .appendTo( "body" )
-    .customprogressbar({ value: 100 });
- 
+function fillProgressbar(customprogressbar) {
+    var value = customprogressbar.customprogressbar( "value" ) || 0;
+
+    if(value < 100) {
+      customprogressbar.customprogressbar("value", value + 1)
+      if ( value < 100 ) {
+        setTimeout( fillProgressbar(customprogressbar), 750 );
+      }
+    }
+
+    setTimeout(1000);
+}
+
+$( document ).ready(function() {
+     var bar = $( "<div></div>" )
+     .appendTo( "body" )
+     .customprogressbar({ value: 0 });
+     //bar.customprogressbar("value", 50);
+     fillProgressbar(bar);
+});
