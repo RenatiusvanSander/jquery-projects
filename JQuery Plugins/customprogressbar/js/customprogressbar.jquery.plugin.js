@@ -38,7 +38,9 @@
 
         this.options.value = this._constrain( value );
         //this.element.progressbar("value", value);
-        this.refresh();
+        if(value < 101) {
+            this.refresh();
+        }
     },
 
     _onComplete: function( event, ui ) {
@@ -95,20 +97,17 @@
 function fillProgressbar(customprogressbar) {
     var value = customprogressbar.customprogressbar( "value" ) || 0;
 
-    if(value < 100) {
+    if(value < 101) {
       customprogressbar.customprogressbar("value", value + 1)
-      if ( value < 100 ) {
-        setTimeout( fillProgressbar(customprogressbar), 750 );
+      if ( value < 101 ) {
+        setTimeout( function() { fillProgressbar(customprogressbar); }, 150 );
       }
     }
-
-    setTimeout(1000);
 }
 
 $( document ).ready(function() {
      var bar = $( "<div></div>" )
      .appendTo( "body" )
      .customprogressbar({ value: 0 });
-     //bar.customprogressbar("value", 50);
-     fillProgressbar(bar);
+     setTimeout(function() { fillProgressbar(bar); }, 50);
 });
