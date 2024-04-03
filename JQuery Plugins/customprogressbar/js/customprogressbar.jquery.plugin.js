@@ -85,8 +85,7 @@
         }
     },
 
-
-    _destroy: function() {
+    destroy: function() {
         this.element.off("click");
         this.element
             .removeClass( "progressbar" )
@@ -97,11 +96,11 @@
 function fillProgressbar(customprogressbar) {
     var value = customprogressbar.customprogressbar( "value" ) || 0;
 
-    if(value < 101) {
+    if(value < 100) {
       customprogressbar.customprogressbar("value", value + 1)
-      if ( value < 101 ) {
-        setTimeout( function() { fillProgressbar(customprogressbar); }, 150 );
-      }
+      setTimeout( function() { fillProgressbar(customprogressbar); }, 150 );
+    } else {
+        return;
     }
 }
 
