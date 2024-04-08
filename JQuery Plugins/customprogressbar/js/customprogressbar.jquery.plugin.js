@@ -24,7 +24,6 @@
             $(this).progressbar("value", currentValue + 10);
         })
         this.element.on( "progressbarchange", function( event, ui ) { console.log("change done")} );
-        
         this.element.find("div.progressbar.ui-progressbar.ui-corner-all.ui-widget.ui-widget-content").attr("id","progresswraper").removeClass("ui-widget-content").addClass("customprogressbar-widget-content");
         this.element.find("div.ui-progressbar-value.ui-corner-left.ui-widget-header").attr("id","progress").removeClass("ui-widget-header").addClass("customprogressbar-widget-header");
 
@@ -37,7 +36,6 @@
         }
 
         this.options.value = this._constrain( value );
-        //this.element.progressbar("value", value);
         if(value < 101) {
             this.refresh();
         }
@@ -49,7 +47,6 @@
             console.log(event);
             console.log("run complete");
             $(this).css("display", "none");
-            //$( this ).customprogressbar.refresh();
         }
     },
 
@@ -85,7 +82,26 @@
         }
     },
 
-    destroy: function() {
+    fillProgressbar: function () {
+        var value = this.element.progressbar( "value" ) || 0;
+    
+        if(value < 100) {
+          this.element.progressbar("value", value + 1)
+          var _this = this;
+
+          if(value === 100) {
+            return;
+          }
+
+          setTimeout( function() {
+            _this.fillProgressbar();
+          }, 150 );
+        } else {
+            return;
+        }
+    },
+
+    _destroy: function() {
         this.element.off("click");
         this.element
             .removeClass( "progressbar" )
@@ -93,20 +109,9 @@
 });
 })(jQuery);
 
-function fillProgressbar(customprogressbar) {
-    var value = customprogressbar.customprogressbar( "value" ) || 0;
-
-    if(value < 100) {
-      customprogressbar.customprogressbar("value", value + 1)
-      setTimeout( function() { fillProgressbar(customprogressbar); }, 150 );
-    } else {
-        return;
-    }
-}
-
 $( document ).ready(function() {
      var bar = $( "<div></div>" )
      .appendTo( "body" )
      .customprogressbar({ value: 0 });
-     setTimeout(function() { fillProgressbar(bar); }, 50);
+     bar.customprogressbar("fillProgressbar");
 });
