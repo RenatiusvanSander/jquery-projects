@@ -101,8 +101,6 @@ function fillProgressbar(customprogressbar) {
         setTimeout( fillProgressbar(customprogressbar), 750 );
       }
     }
-
-    setTimeout(1000);
 }
 
 $( document ).ready(function() {
@@ -110,5 +108,5 @@ $( document ).ready(function() {
      .appendTo( "body" )
      .customprogressbar({ value: 0 });
      //bar.customprogressbar("value", 50);
-     fillProgressbar(bar);
+     setTimeout(fillProgressbar(bar), 3000);
 });
