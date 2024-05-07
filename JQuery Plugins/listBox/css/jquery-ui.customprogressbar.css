@@ -1,0 +1,10 @@
+.customprogressbar-widget-header {
+    border: 1px solid #365342;
+    background: #598b6e;
+    color: #333333;
+    font-weight: bold;
+}
+
+.customprogressbar-widget-content {
+    border: 1px solid #111412;
+}
