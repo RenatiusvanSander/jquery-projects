@@ -1,23 +1,44 @@
 (function ( $ ) {
- 
     $.fn.listBox = function(options) {
-        var settings = $.extend({
+        var opts = $.extend({
         }, options );
 
         var _that = this;
-        _that.settings;
 
-        var element = $("#listBox");
-        element.addClass('listBox');
+        var createMarkup = function() {
+            var ul = $('<ul id="listBoxUl" class="review_bottom"></ul>');
+            element.append(ul);
+            for(i = 0; i < 10; i++) {
+                ul.append($('<il id=' + i + '>' + i + '</li>'));
+            }
+        };
 
-        var ul = $('<ul id="listBox" class="review_bottom"></ul>');
-        var input = $('<input type="text" />').appendTo("body").on('keydown', function(event) {
+        var handleKeyDown = function(event) {
             console.log(event);
-        });
-        for(i = 0; i < 10; i++) {
-            ul.append($('<il id=' + i + '>' + i + '</li>'));
-        }
-        element.append(ul);
+    
+            if(event.originalEvent.charCode === 40 && event.originalEvent.altKey === false) {
+                toggleVisibility();
+            }
+
+            if(event.originalEvent.keyCode === 27) {
+                if(element.is(':visible')) {
+                    element.hide();
+                }
+
+                if(element.not(':visible')) {
+                    input.val('');
+                }
+            }
+        };
+    
+        var toggleVisibility = function() {
+            element.toggle();
+        };
+
+        var input = $('<input type="text" />').insertBefore('#listBox'); 
+        var element = $('#listBox').addClass('listBox');
+        createMarkup();
+        input.on('keydown', handleKeyDown);
 
         return this;
     };
