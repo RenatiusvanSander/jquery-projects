@@ -1,0 +1,7 @@
+.review_bottom li {
+    list-style: none;
+}
+.review_bottom li:after {
+    content: "\A";
+    white-space: pre;
+}
