@@ -16,8 +16,8 @@
         var handleKeyDown = function(event) {
             console.log(event);
     
-            if(event.originalEvent.charCode === 40 && event.originalEvent.altKey === false) {
-                toggleVisibility();
+            if(event.originalEvent.keyCode === 40 && event.originalEvent.altKey === true) {
+                element.show();
             }
 
             if(event.originalEvent.keyCode === 27) {
@@ -27,6 +27,16 @@
 
                 if(element.not(':visible')) {
                     input.val('');
+                }
+            }
+
+            if(event.originalEvent.keyCode === 40 && event.originalEvent.altKey === false) {
+                if(element.is(':visible') && input.val().length == 0) {
+                    
+                }
+
+                if(element.not(':visible') && input.val().length > 0) {
+
                 }
             }
         };
