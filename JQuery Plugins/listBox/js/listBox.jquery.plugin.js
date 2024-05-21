@@ -6,7 +6,8 @@
         var _that = this;
 
         var createMarkup = function() {
-            var ul = $('<ul id="listBoxUl" class="review_bottom"></ul>');
+            var ul = $('<ul id="listBoxUl" class="tooltiptext"></ul>');
+            element.append(input);
             element.append(ul);
             for(i = 0; i < 10; i++) {
                 ul.append($('<il id=' + i + '>' + i + '</li>'));
@@ -15,6 +16,12 @@
 
         var handleKeyDown = function(event) {
             console.log(event);
+
+            if(event.originalEvent.keyCode === 13) {
+                if(element.is(':visible')) {
+                    element.hide();
+                }
+            }
     
             if(event.originalEvent.keyCode === 40 && event.originalEvent.altKey === true) {
                 element.show();
@@ -31,12 +38,12 @@
             }
 
             if(event.originalEvent.keyCode === 40 && event.originalEvent.altKey === false) {
-                if(element.is(':visible') && input.val().length == 0) {
+                if(element.is(':visible') && input.val().length === 0) {
                     
                 }
 
                 if(element.not(':visible') && input.val().length > 0) {
-
+                    _that.element.find('#listBoxUl').children()[0];
                 }
             }
         };
