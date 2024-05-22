@@ -18,32 +18,37 @@
             console.log(event);
 
             if(event.originalEvent.keyCode === 13) {
-                if(element.is(':visible')) {
-                    element.hide();
+                if(element.find('#listBoxUl').is(':visible')) {
+                    element.find('listBoxUl').hide();
                 }
             }
     
             if(event.originalEvent.keyCode === 40 && event.originalEvent.altKey === true) {
-                element.show();
+                element.find('listBoxUl').show();
             }
 
             if(event.originalEvent.keyCode === 27) {
-                if(element.is(':visible')) {
-                    element.hide();
+                if(element.find('listBoxUl').is(':visible')) {
+                    element.find('listBoxUl').hide();
                 }
 
-                if(element.not(':visible')) {
+                if(element.find('listBoxUl').not(':visible')) {
                     input.val('');
                 }
             }
 
             if(event.originalEvent.keyCode === 40 && event.originalEvent.altKey === false) {
-                if(element.is(':visible') && input.val().length === 0) {
+                if(element.find('listBoxUl').is(':visible') && input.val().length === 0) {
                     
                 }
 
-                if(element.not(':visible') && input.val().length > 0) {
-                    _that.element.find('#listBoxUl').children()[0];
+                if(element.find('listBoxUl').not(':visible') && input.val().length === 0) {
+                    var list = element.find('#listBoxUl');
+                    $(list).css('visibility','visible');
+                    var child = list.children()[0];
+
+                    child.focus({focusVisible: true});
+                    $(child).css('background-color','white');
                 }
             }
         };
