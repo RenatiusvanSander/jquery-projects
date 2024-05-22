@@ -16,7 +16,7 @@
         var handleKeyDown = function(event) {
             console.log(event);
     
-            if(event.originalEvent.charCode === 40 && event.originalEvent.altKey === false) {
+            if(event.originalEvent.keyCode === 40 && event.originalEvent.altKey === false) {
                 toggleVisibility();
             }
 
