@@ -23,8 +23,13 @@
                 }
             }
     
+<<<<<<< HEAD
+            if(event.originalEvent.keyCode === 40 && event.originalEvent.altKey === false) {
+                toggleVisibility();
+=======
             if(event.originalEvent.keyCode === 40 && event.originalEvent.altKey === true) {
                 element.show();
+>>>>>>> 1d5396a4784671dc07cb2d10484c43136d3e0892
             }
 
             if(event.originalEvent.keyCode === 27) {
