@@ -41,6 +41,15 @@
     border-color: #292929 transparent transparent transparent;
 }
 
+.focus-visible {
+    visibility: visible;
+    max-width: 100px;
+    max-height: 200px;
+    background-color: lightskyblue;
+    color: black;
+    font-size: 12pt;
+}
+
 /*
 .tooltip:hover .tooltiptext {
     visibility: visible;

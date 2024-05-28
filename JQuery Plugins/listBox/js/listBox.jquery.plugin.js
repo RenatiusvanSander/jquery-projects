@@ -13,9 +13,9 @@
                 ul.append($('<il id=' + i + '>' + i + '</li>'));
             }
         };
+        var positionIndex = 0;
 
         var handleKeyDown = function(event) {
-            console.log(event);
 
             if(event.originalEvent.keyCode === 13) {
                 if(element.find('#listBoxUl').is(':visible')) {
@@ -38,17 +38,21 @@
             }
 
             if(event.originalEvent.keyCode === 40 && event.originalEvent.altKey === false) {
-                if(element.find('listBoxUl').is(':visible') && input.val().length === 0) {
-                    
-                }
+                if(element[0].children[1].hasAttribute('style') && input.val().length === 0) {
+                    $(listBoxChildren[positionIndex]).removeClass('focus-visible');
+                    $(listBoxChildren[positionIndex]).blur();
 
-                if(element.find('listBoxUl').not(':visible') && input.val().length === 0) {
+                    positionIndex = positionIndex < 9 ? positionIndex + 1 : 0;
+                    listBoxChildren[positionIndex].focus({focusVisible: true});
+                    $(listBoxChildren[positionIndex]).addClass('focus-visible');
+                } else {
                     var list = element.find('#listBoxUl');
                     $(list).css('visibility','visible');
-                    var child = list.children()[0];
+                    $(list).css('width','40px');
+                    $(list).css('height','80px');
 
-                    child.focus({focusVisible: true});
-                    $(child).css('background-color','white');
+                    listBoxChildren[positionIndex].focus({focusVisible: true});
+                    $(listBoxChildren[positionIndex]).addClass('focus-visible');
                 }
             }
         };
@@ -60,6 +64,7 @@
         var input = $('<input type="text" />').insertBefore('#listBox'); 
         var element = $('#listBox').addClass('listBox');
         createMarkup();
+        var listBoxChildren = $('#listBoxUl').children();
         input.on('keydown', handleKeyDown);
 
         return this;
