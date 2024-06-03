@@ -15,8 +15,8 @@
 
 .tooltip .tooltiptext {
     visibility: hidden;
-    width: 300px;
-    min-width: 350px;
+    width: 100px;
+    min-width: 100px;
     background-color: #292929;
     color: #fff;
     text-align: center;
@@ -24,7 +24,7 @@
     padding: .5rem;
     position: absolute;
     z-index: 1;
-    bottom: 250%;
+    top: 30%;
     left: 50%;
     margin-left: -60px;
     font-family:sans-serif;
@@ -33,7 +33,7 @@
 .tooltip .tooltiptext::after {
     content: "";
     position: absolute;
-    top: 100%;
+    top: 0%;
     left: 10%;
     margin-left: -5px;
     border-width: 5px;
@@ -44,7 +44,7 @@
 .focus-visible {
     visibility: visible;
     max-width: 100px;
-    max-height: 200px;
+    max-height: 80px;
     background-color: lightskyblue;
     color: black;
     font-size: 12pt;
