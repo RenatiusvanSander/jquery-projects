@@ -1,0 +1,18 @@
+#slider {
+    width: 300px;
+    height: 300px;
+  }
+  
+  #slider ul {
+    list-style: none;
+    width: 1500px;
+    height: 300px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #slider li {
+    float: left;
+    width: 300px;
+    height: 300px;
+  }
