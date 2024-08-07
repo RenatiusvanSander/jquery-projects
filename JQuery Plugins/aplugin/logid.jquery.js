@@ -1,4 +1,4 @@
-var definePlugin = function() {
+  var definePlugin = function() {
     var $ = jQuery;
     $.fn.logId = function() {
       return this.each(function() {
