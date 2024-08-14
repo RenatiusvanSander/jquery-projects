@@ -1,3 +1,5 @@
 $(function() {
-  $("div").logAttr("rel", "N/A", true);
+  $("div").logAttr({
+    attr: "rel"
+  });
 });

@@ -1,11 +1,14 @@
 (function($) {
-    $.fn.logAttr = function(attr, backup, useAlert) {
-      return this.each(function() {
-        if(useAlert) {
-          alert($(this).attr(attr) || backup);
-        } else {
-          console.log($(this).attr(attr) || backup);
-        }
-      });
+  $.fn.logAttr = function(opts) {
+    var defaults = {
+      attr: "id",
+      backup: "N/A",
+      useAlert: false
     };
-  })(jQuery);
+    var options = $.extend({}, defaults, opts);
+    return this.each(function() {
+      var val = $(this).attr(options.attr) || options.backup;
+      options.useAlert ? alert(val) : console.log(val);
+    });
+  };
+})(jQuery);
